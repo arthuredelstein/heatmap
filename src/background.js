@@ -1,3 +1,4 @@
+/*
 const winEnum = Services.wm.getEnumerator(null);
 const aWindow = winEnum.getNext();
 // Usually figures out the element involved in a click.
@@ -9,4 +10,11 @@ await browser.telemetry.registerEvents("test_category", {"test_category": {"meth
 
 // recording events
 await browser.telemetry.recordEvent("test_category", "click", "click_object", "dynamicValue", {"selector": "dynamicSelector"})
+*/
 
+console.log("hello");
+
+//(async () => {
+//  console.log("devtools.chrome.enabled",
+//              await browser.chromeWindows.getBoolPref("devtools.chrome.enabled"));
+//})()
