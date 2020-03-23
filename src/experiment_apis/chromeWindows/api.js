@@ -1,6 +1,6 @@
 this.chromeWindows = class extends ExtensionAPI {
   getAPI(context) {
-    const {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm', {});
+    const { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm', {});
     const { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm", {});
     const { EventManager } = ExtensionCommon;
     const initialWindows = [...Services.wm.getEnumerator(null)];
