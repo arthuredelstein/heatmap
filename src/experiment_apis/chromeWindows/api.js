@@ -16,7 +16,8 @@ this.chromeWindows = class extends ExtensionAPI {
             const callback = event => {
               Services.console.logStringMessage(`${eventType}: ${event}`);
               fire.async({"type": event.type,
-                          "targetID": event.target.id});
+                          "targetID": event.target.id,
+                          "tag": event.target.tagName});
             };
             initialWindows.map(w => w.addEventListener(eventType, callback));
             Services.console.logStringMessage("event listeners added");

@@ -6,11 +6,11 @@ console.log("heatmap started");
 
   // recording events
   browser.chromeWindows.onEvent.addListener(async (e) => {
-    console.log(`event received: ${e}`);
+    console.log(`event received: ${JSON.stringify(e)}`);
     await browser.telemetry.recordEvent("test_category", "click", "click_object", JSON.stringify(e));
   }, "click");
   browser.chromeWindows.onEvent.addListener(async (e) => {
-    console.log(`event received: ${e}`);
+    console.log(`event received: ${JSON.stringify(e)}`);
     await browser.telemetry.recordEvent("test_category", "command", "command_object", JSON.stringify(e));
   }, "command");
   // do "click" as well.
