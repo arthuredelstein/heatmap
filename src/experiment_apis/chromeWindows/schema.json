@@ -2,23 +2,23 @@
   {
     "namespace": "chromeWindows",
     "description": "Chrome Window events",
-    "functions": [
+    "events": [
       {
-        "name": "getBoolPref",
+        "name": "onEvent",
         "type": "function",
-        "description": "Get a boolean preference value.",
-        "async": true,
+        "description": "Description of the event",
         "parameters": [
           {
-            "name": "prefName",
-            "type": "string",
-            "description": "The name of the preference."
-          },
+            "name": "event",
+            "description": "Description of the event",
+            "type": "object"
+          }
+        ],
+        "extraParameters": [
           {
-            "name": "defaultValue",
-            "type": "boolean",
-            "description": "The default value to use if the preference is unset.",
-            "optional": true
+            "name": "eventType",
+            "description": "The type of event we're listening for.",
+            "type": "string"
           }
         ]
       }
