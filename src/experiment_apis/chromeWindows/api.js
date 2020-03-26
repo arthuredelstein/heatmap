@@ -11,6 +11,30 @@ const removeAllEventListeners = () => {
   }
 };
 
+const classNameToSelector = className => {
+  const classSegments = className.split(/\s+/);
+  return "." + classSegments.join(".");
+};
+
+const selectorFromElement = (element) => {
+  let selector = "";
+  for (x = element; x !== null; x = x.parentElement) {
+    let segment = x.tagName;
+    if (x.id === "") {
+      segment += (x.className !== "") ? classNameToSelector(x.className) : "";
+    } else {
+      segment += `#${x.id}`;
+    }
+    let newSelector = (segment + " " + selector).trim();
+    if (newSelector.length > 80) {
+      break;
+    } else {
+      selector = newSelector;
+    }
+  }
+  return selector;
+};
+
 this.chromeWindows = class extends ExtensionAPI {
   getAPI(context) {
     const { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm', {});
@@ -30,10 +54,8 @@ this.chromeWindows = class extends ExtensionAPI {
             const callback = (windowID, event) => {
               Services.console.logStringMessage(`${eventType}: ${event}`);
               fire.async({"type": event.type,
-                          "id": event.target.id,
-                          "tag": event.target.tagName,
-                          "class": event.target.className,
-                          "windowID": windowID
+                          "windowID": windowID.toString(),
+                          "selector": selectorFromElement(event.target)
                          });
             };
             const setupWindow = w => addEventListener(
