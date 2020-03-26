@@ -1,3 +1,16 @@
+const attachedEvents = [];
+
+const addEventListener = (element, eventType, callback) => {
+  element.addEventListener(eventType, callback);
+  attachedEvents.push({eventType, element, callback});
+};
+
+const removeAllEventListeners = () => {
+  for (let {element, eventType, callback} of attachedEvents) {
+    element.removeEventListener(eventType, callback);
+  }
+};
+
 this.chromeWindows = class extends ExtensionAPI {
   getAPI(context) {
     const { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm', {});
@@ -23,7 +36,8 @@ this.chromeWindows = class extends ExtensionAPI {
                           "windowID": windowID
                          });
             };
-            const setupWindow = w => w.addEventListener(
+            const setupWindow = w => addEventListener(
+              w,
               eventType,
               event => callback(w.windowUtils.outerWindowID, event));
             const windowObserver = {
@@ -38,7 +52,7 @@ this.chromeWindows = class extends ExtensionAPI {
             Services.console.logStringMessage("event listeners added");
             return () => {
               Services.ww.unregisterNotification(windowObserver);
-              initialWindows.map(w => w.removeEventListener(eventType, callback));
+              removeAllEventListeners();
               Services.console.logStringMessage("event listeners removed");
             };
           }
