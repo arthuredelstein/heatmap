@@ -14,10 +14,7 @@
   },
 
   "permissions": [
-    "<all_urls>",
-    "alarms",
-    "telemetry",
-    "webRequest"
+    "telemetry"
   ],
 
   "background": {
