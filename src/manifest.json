@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "name": "heatmap",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en_US",
+  "version": "0.1",
+
+  "hidden": true,
+
+  "applications": {
+    "gecko": {
+      "id": "heatmap@mozilla.org"
+    }
+  },
+
+  "permissions": [
+    "<all_urls>",
+    "alarms",
+    "telemetry",
+    "webRequest"
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "experiment_apis": {
+    "chromeWindows": {
+      "schema": "experiment_apis/chromeWindows/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "script": "experiment_apis/chromeWindows/api.js",
+        "paths": [["chromeWindows"]]
+      }
+    }
+  }
+}

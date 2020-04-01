@@ -1,0 +1,9 @@
+{
+  "extensionName": {
+    "message": "HTTPS Upgrade study",
+    "description": "Mozilla study examining HTTPS Upgrades"
+  },
+  "extensionDescription": {
+    "message": "Mozilla study examining HTTPS Upgrades"
+  }
+}

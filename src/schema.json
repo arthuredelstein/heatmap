@@ -1,0 +1,13 @@
+"chromewindows": {
+  "schema": "chrome://extensions/content/schemas/myapi.json",
+  "url": "chrome://extensions/content/ext-myapi.js",
+  "paths": [
+    ["myapi"],
+    ["anothernamespace", "subproperty"]
+  ],
+  "scopes": ["addon_parent"],
+  "permissions": ["myapi"],
+  "manifest": ["myapi_key"],
+  "events": ["update", "uninstall"]
+}
+
